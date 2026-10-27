@@ -339,44 +339,13 @@
     </section>
 
     <!-- Contact & Booking Section -->
-    <section id="contact" :class="{ 'bg-slate-800/50': darkMode, 'bg-slate-100': !darkMode }" class="py-20 transition-colors" x-data="{ sent: false }">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div :class="{ 'bg-slate-800 border-slate-700': darkMode, 'bg-white border-slate-200 shadow-2xl': !darkMode }" class="p-8 sm:p-12 rounded-3xl border">
-                <div class="text-center max-w-xl mx-auto mb-10">
-                    <h2 class="text-3xl font-bold tracking-tight mb-3">Let's Work Together</h2>
-                    <p class="opacity-75">Send a message to discuss your project or schedule a quick discovery chat.</p>
-                </div>
-
-                <template x-if="!sent">
-                    <form @submit.prevent="sent = true" class="space-y-6">
-                        <div class="grid sm:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase opacity-75">Your Name</label>
-                                <input type="text" required placeholder="John Smith" :class="{ 'bg-slate-900 border-slate-700': darkMode, 'bg-slate-50 border-slate-200': !darkMode }" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:border-blue-500 transition-colors">
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-xs font-bold uppercase opacity-75">Email Address</label>
-                                <input type="email" required placeholder="john@company.com" :class="{ 'bg-slate-900 border-slate-700': darkMode, 'bg-slate-50 border-slate-200': !darkMode }" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:border-blue-500 transition-colors">
-                            </div>
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-xs font-bold uppercase opacity-75">Message / Project Details</label>
-                            <textarea rows="4" required placeholder="Tell me about your business and what support you need..." :class="{ 'bg-slate-900 border-slate-700': darkMode, 'bg-slate-50 border-slate-200': !darkMode }" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:border-blue-500 transition-colors"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-500/20 transition-all">
-                            Send Message
-                        </button>
-                    </form>
-                </template>
-
-                <template x-if="sent">
-                    <div class="text-center py-12 space-y-4">
-                        <div class="w-16 h-16 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
-                            <i class="fa-solid fa-check"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold">Message Sent Successfully!</h3>
-                        <p class="opacity-75">Thank you for reaching out. Gracie will get back to your inquiry promptly.</p>
-                    </div>
+    <div class="text-center py-8 space-y-4">
+    <h3 class="text-2xl font-bold">Ready to Work Together?</h3>
+    <p class="opacity-75">Click below to send me a direct email regarding your project or support needs.</p>
+    <a href="mailto:magpantaygracie@gmail.com?subject=Inquiry from Portfolio Website" class="inline-block px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-500/20 transition-all">
+        Send Me an Email
+    </a>
+    </div>
                 </template>
             </div>
         </div>
