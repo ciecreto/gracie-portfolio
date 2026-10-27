@@ -3,578 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gracie B. Magpantay | Virtual Assistant & Client Support Specialist</title>
-    <!-- Tailwind CSS -->
+    <title>Gracie Magpantay | Virtual Assistant & Client Support Specialist</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
                     colors: {
-                        brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e3a8a',
-                        }
+                        brand: { 50: '#eff6ff', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8' }
                     }
                 }
             }
         }
     </script>
-    <style>
-        .gradient-text {
-            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .dark .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans antialiased">
+<body x-data="{ darkMode: false, mobileMenu: false }" :class="{ 'bg-slate-900 text-slate-100': darkMode, 'bg-slate-50 text-slate-800': !darkMode }" class="transition-colors duration-300 font-sans">
 
-    <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-brand-600 text-white flex items-center justify-center font-bold text-lg shadow-md">
-                        GM
-                    </div>
-                    <div>
-                        <a href="#" class="font-bold text-lg tracking-tight text-slate-900 dark:text-white">Gracie Magpantay</a>
-                        <span class="block text-xs text-brand-600 dark:text-brand-400 font-semibold uppercase tracking-wider">Virtual Assistant</span>
-                    </div>
-                </div>
-
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-400 transition">About</a>
-                    <a href="#metrics" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-400 transition">Metrics</a>
-                    <a href="#portfolio" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-400 transition">Work Samples</a>
-                    <a href="#skills" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-400 transition">Skills & AI Integration</a>
-                    <a href="#pricing" class="text-sm font-medium hover:text-brand-600 dark:hover:text-brand-400 transition">Rates</a>
-                    <a href="#contact" class="px-4 py-2 text-sm font-semibold rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition shadow-sm">Hire Me</a>
-                    
-                    <!-- Dark Mode Toggle -->
-                    <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-brand-600">
-                        <i id="themeIcon" class="fas fa-moon"></i>
-                    </button>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center gap-2">
-                    <button id="themeToggleMobile" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
-                        <i id="themeIconMobile" class="fas fa-moon"></i>
-                    </button>
-                    <button id="mobileMenuBtn" class="p-2 rounded-lg text-slate-600 dark:text-slate-300">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
+    <!-- Navbar -->
+    <header :class="{ 'bg-slate-900/90 border-slate-800': darkMode, 'bg-white/90 border-slate-200': !darkMode }" class="sticky top-0 z-50 backdrop-blur-md border-b transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-500/20">GM</div>
+                <div>
+                    <span class="font-bold text-lg tracking-tight block leading-none">Gracie Magpantay</span>
+                    <span class="text-xs text-blue-500 font-medium">VIRTUAL ASSISTANT</span>
                 </div>
             </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-500 transition-colors">About</a>
+                <a href="#metrics" class="hover:text-blue-500 transition-colors">Metrics</a>
+                <a href="#samples" class="hover:text-blue-500 transition-colors">Work Samples</a>
+                <a href="#skills" class="hover:text-blue-500 transition-colors">Skills & AI</a>
+                <a href="#rates" class="hover:text-blue-500 transition-colors">Rates</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <button @click="darkMode = !darkMode" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i :class="darkMode ? 'fa-sun text-amber-400' : 'fa-moon text-slate-600'" class="fa-solid text-lg"></i>
+                </button>
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-lg shadow-blue-600/20 transition-all">
+                    Hire Me
+                </a>
+            </div>
         </div>
-        
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
-            <a href="#about" class="block py-2 text-sm font-medium">About</a>
-            <a href="#metrics" class="block py-2 text-sm font-medium">Metrics</a>
-            <a href="#portfolio" class="block py-2 text-sm font-medium">Work Samples</a>
-            <a href="#skills" class="block py-2 text-sm font-medium">Skills & AI</a>
-            <a href="#pricing" class="block py-2 text-sm font-medium">Rates</a>
-            <a href="#contact" class="block text-center w-full py-2.5 text-sm font-semibold rounded-lg bg-brand-600 text-white">Hire Me</a>
-        </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="about" class="py-16 md:py-24 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-12 gap-12 items-center">
-                <div class="md:col-span-7 space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/40 text-brand-600 dark:text-brand-300 text-xs font-bold uppercase tracking-wider border border-brand-200 dark:border-brand-800">
-                        <i class="fas fa-circle text-[8px] animate-pulse"></i> Available for Full-Time & Part-Time Roles
-                    </div>
-                    
-                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-                        Hi, I'm Gracie Magpantay <br>
-                        <span class="gradient-text">Virtual Assistant & Support Specialist</span>
-                    </h1>
-                    
-                    <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                        With <strong>15+ months of proven BPO experience</strong> across Telco, E-Commerce seller services, and Financial accounts, I help busy founders and businesses streamline operations. I combine multi-channel communication (Voice, Chat, Email) with <strong>Gemini AI integration</strong> to deliver exceptional client care and administrative efficiency.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="#contact" class="px-6 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-base shadow-lg shadow-brand-500/25 transition">
-                            Book a Discovery Call
-                        </a>
-                        <a href="#portfolio" class="px-6 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 font-semibold text-base transition border border-slate-200 dark:border-slate-700">
-                            View Work Samples
-                        </a>
-                    </div>
-
-                    <!-- Contact Quick Info -->
-                    <div class="pt-4 flex flex-wrap gap-6 text-sm text-slate-500 dark:text-slate-400">
-                        <span class="flex items-center gap-2"><i class="fas fa-location-dot text-brand-500"></i> Quezon City, Philippines</span>
-                        <span class="flex items-center gap-2"><i class="fas fa-envelope text-brand-500"></i> magpantaygracie@gmail.com</span>
-                        <span class="flex items-center gap-2"><i class="fas fa-phone text-brand-500"></i> 09214668522</span>
-                    </div>
-                </div>
-
-                <!-- Avatar / Summary Card -->
-                <div class="md:col-span-5">
-                    <div class="relative mx-auto max-w-sm rounded-2xl bg-white dark:bg-slate-800 p-6 shadow-2xl border border-slate-200 dark:border-slate-700">
-                        <div class="absolute -top-3 -right-3 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                            95% CSAT Verified
-                        </div>
-                        <div class="text-center space-y-4">
-                            <div class="w-28 h-28 mx-auto rounded-full bg-gradient-to-tr from-brand-500 to-purple-600 p-1">
-                                <div class="w-full h-full rounded-full bg-white dark:bg-slate-800 flex items-center justify-center font-bold text-3xl text-brand-600 dark:text-brand-400">
-                                    GM
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-xl text-slate-900 dark:text-white">Gracie B. Magpantay</h3>
-                                <p class="text-sm text-slate-500 dark:text-slate-400">Virtual Assistant | Client Services</p>
-                            </div>
-
-                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/60 text-left space-y-2 text-xs">
-                                <div class="flex justify-between">
-                                    <span class="text-slate-500">Time Zone Adaptability:</span>
-                                    <span class="font-semibold text-emerald-600 dark:text-emerald-400">US, AU, UK & Asia</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-500">Primary Channels:</span>
-                                    <span class="font-semibold text-slate-700 dark:text-slate-200">Voice, Chat, Email</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-500">AI Tooling:</span>
-                                    <span class="font-semibold text-purple-600 dark:text-purple-400">Gemini AI Suite</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-slate-500">Hourly Rate:</span>
-                                    <span class="font-semibold text-brand-600 dark:text-brand-400">$5.00 / hour</span>
-                                </div>
-                            </div>
-
-                            <button onclick="scrollToContact()" class="w-full py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 dark:text-slate-900 text-white font-semibold text-sm transition">
-                                Hire Gracie Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 grid md:grid-cols-12 gap-12 items-center">
+        <div class="md:col-span-7 space-y-6">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-500 text-xs font-semibold uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                Available for Remote Roles
             </div>
-        </div>
-    </section>
-
-    <!-- Performance Metrics Dashboard -->
-    <section id="metrics" class="py-12 bg-white dark:bg-slate-800/50 border-y border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8">
-                <h2 class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">Track Record</h2>
-                <p class="text-2xl font-bold text-slate-900 dark:text-white">Proven Performance Indicators</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/60 shadow-sm">
-                    <div class="text-4xl font-extrabold text-brand-600 dark:text-brand-400 mb-1">95%</div>
-                    <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">CSAT Score</div>
-                    <p class="text-xs text-slate-500 mt-1">Consistent customer satisfaction rating</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/60 shadow-sm">
-                    <div class="text-4xl font-extrabold text-emerald-600 dark:text-emerald-400 mb-1">15+</div>
-                    <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">Months BPO Exp</div>
-                    <p class="text-xs text-slate-500 mt-1">Telco, E-Commerce, Financial</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/60 shadow-sm">
-                    <div class="text-4xl font-extrabold text-purple-600 dark:text-purple-400 mb-1">0</div>
-                    <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">Client Escalations</div>
-                    <p class="text-xs text-slate-500 mt-1">Immaculate professional history</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700/60 shadow-sm">
-                    <div class="text-4xl font-extrabold text-amber-500 mb-1">3x</div>
-                    <div class="text-sm font-semibold text-slate-700 dark:text-slate-200">Multi-Channel</div>
-                    <p class="text-xs text-slate-500 mt-1">Voice, Live Chat & Email expertise</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Samples Showcase Section -->
-    <section id="portfolio" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">Interactive Portfolio</h2>
-                <h3 class="text-3xl font-bold text-slate-900 dark:text-white mt-2">Work Samples & Scenario Demonstrations</h3>
-                <p class="text-slate-600 dark:text-slate-400 mt-3 text-sm">
-                    Explore real-world scenarios showing how I manage client communications, handle seller chats, and leverage <strong>Gemini AI</strong> for speed and precision.
-                </p>
-            </div>
-
-            <!-- Tab Buttons -->
-            <div class="flex flex-wrap justify-center gap-2 mb-8">
-                <button onclick="switchTab('sample-email')" id="tab-sample-email" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm bg-brand-600 text-white shadow-md">
-                    <i class="fas fa-envelope mr-2"></i> Financial B2B Email (Gym Account)
-                </button>
-                <button onclick="switchTab('sample-chat')" id="tab-sample-chat" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
-                    <i class="fas fa-comments mr-2"></i> E-Commerce Chat Support
-                </button>
-                <button onclick="switchTab('sample-ai')" id="tab-sample-ai" class="tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">
-                    <i class="fas fa-robot mr-2"></i> AI Workflow (Gemini Drafting)
-                </button>
-            </div>
-
-            <!-- Tab Contents -->
-            <div class="max-w-4xl mx-auto bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-xl overflow-hidden">
-                
-                <!-- Tab 1: Financial Email -->
-                <div id="content-sample-email" class="tab-content p-6 sm:p-8 space-y-4">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-700">
-                        <div>
-                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">Financial B2B / Gym Account</span>
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-1">Resolution Email for Membership & Billing Inquiry</h4>
-                        </div>
-                        <span class="text-xs text-slate-400"><i class="fas fa-clock mr-1"></i> Outbound Correspondence</span>
-                    </div>
-                    
-                    <div class="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl font-mono text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-3">
-                        <p><strong>To:</strong> partner-relations@fitlifecommercial.com</p>
-                        <p><strong>Subject:</strong> Account Resolution & Subscription Update - Metro Fitness Hub [Ref #49201]</p>
-                        <hr class="border-slate-200 dark:border-slate-800">
-                        <p>Dear FitLife Management,</p>
-                        <p>Thank you for connecting with ABC Financial Services regarding your gym facility’s billing adjustment request for October 2026.</p>
-                        <p>I have audited your account ledger and successfully updated the auto-billing schedule for your 12 commercial gym equipment licenses. The overcharge of $350.00 has been credited back directly to your primary merchant card, reflecting within 1-2 business days.</p>
-                        <p>Additionally, your updated quarterly statement is attached for your records. Please let me know if you need assistance with any other account management tasks!</p>
-                        <p class="pt-2">Warm regards,<br><strong>Gracie Magpantay</strong><br>Client Services Specialist | ABC Company</p>
-                    </div>
-                    <div class="text-xs text-slate-500 flex items-center gap-2">
-                        <i class="fas fa-check-circle text-emerald-500"></i> Demonstrates: Professional tone, accurate billing audit, prompt B2B customer support.
-                    </div>
-                </div>
-
-                <!-- Tab 2: E-Commerce Chat -->
-                <div id="content-sample-chat" class="tab-content hidden p-6 sm:p-8 space-y-4">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-700">
-                        <div>
-                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300">E-Commerce Seller Support</span>
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-1">Live Chat Transcript (Store Listing & Order Sync)</h4>
-                        </div>
-                        <span class="text-xs text-slate-400"><i class="fas fa-circle text-emerald-500 mr-1"></i> Live Chat Queue</span>
-                    </div>
-
-                    <div class="bg-slate-50 dark:bg-slate-900 p-5 rounded-xl text-xs sm:text-sm space-y-4">
-                        <div class="flex gap-3">
-                            <div class="w-7 h-7 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center text-xs font-bold">Seller</div>
-                            <div class="bg-white dark:bg-slate-800 p-3 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 max-w-md">
-                                "Hi! My product inventory is not syncing to my online storefront today. Orders are backed up!"
-                            </div>
-                        </div>
-
-                        <div class="flex gap-3 justify-end">
-                            <div class="bg-brand-600 text-white p-3 rounded-lg shadow-sm max-w-md">
-                                "Hello! I completely understand how critical inventory syncing is for your sales. Let me check your API store integration right now. May I have your Merchant ID?"
-                            </div>
-                            <div class="w-7 h-7 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs font-bold">GM</div>
-                        </div>
-
-                        <div class="flex gap-3 justify-end">
-                            <div class="bg-brand-600 text-white p-3 rounded-lg shadow-sm max-w-md">
-                                "Thanks! I've cleared the cached inventory queue on your CRM admin dashboard. Your 45 pending orders are now synced and updated!"
-                            </div>
-                            <div class="w-7 h-7 rounded-full bg-brand-600 text-white flex items-center justify-center text-xs font-bold">GM</div>
-                        </div>
-
-                        <div class="flex gap-3">
-                            <div class="w-7 h-7 rounded-full bg-slate-300 dark:bg-slate-700 flex items-center justify-center text-xs font-bold">Seller</div>
-                            <div class="bg-white dark:bg-slate-800 p-3 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 max-w-md">
-                                "Wow, that was super fast! Everything is updated now. Thank you so much, Gracie!"
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab 3: AI Workflow -->
-                <div id="content-sample-ai" class="tab-content hidden p-6 sm:p-8 space-y-4">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-700">
-                        <div>
-                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300">Gemini AI Integration</span>
-                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mt-1">AI Prompt & Administrative Automation Example</h4>
-                        </div>
-                        <span class="text-xs text-purple-600 dark:text-purple-400 font-semibold"><i class="fas fa-sparkles mr-1"></i> Gemini AI Powered</span>
-                    </div>
-
-                    <div class="space-y-3">
-                        <div class="p-3 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800/50 rounded-lg text-xs">
-                            <span class="font-bold text-purple-700 dark:text-purple-300">Prompt Used in Gemini:</span>
-                            <p class="italic text-slate-700 dark:text-slate-300 mt-0.5">"Summarize this 10-page client account meeting transcript into 3 action points and draft a 150-word confirmation email."</p>
-                        </div>
-
-                        <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-xl text-xs space-y-2 font-mono">
-                            <div class="font-bold text-emerald-600 dark:text-emerald-400">⚡ AI Output (Refined & Edited by Gracie in 2 minutes):</div>
-                            <ul class="list-disc pl-4 space-y-1 text-slate-700 dark:text-slate-300">
-                                <li><strong>Action 1:</strong> Update weekly CRM customer roster by Friday EOD.</li>
-                                <li><strong>Action 2:</strong> Send automated invoice reminders to overdue accounts.</li>
-                                <li><strong>Action 3:</strong> Schedule Q4 calendar review with account director.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills & Tools Matrix -->
-    <section id="skills" class="py-16 bg-white dark:bg-slate-800/40 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">Capabilities</h2>
-                <h3 class="text-3xl font-bold text-slate-900 dark:text-white mt-2">Technical Skills & Software Stack</h3>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Skill 1 -->
-                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-4">
-                    <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/50 text-brand-600 dark:text-brand-400 flex items-center justify-center text-xl">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Customer & Client Services</h4>
-                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Inbound & Outbound Calling</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Real-Time Live Chat Support</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Email Ticketing & Resolution</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> B2B Merchant & Seller Support</li>
-                    </ul>
-                </div>
-
-                <!-- Skill 2 -->
-                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-4">
-                    <div class="w-12 h-12 rounded-xl bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-xl">
-                        <i class="fas fa-wand-magic-sparkles"></i>
-                    </div>
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">AI Tools & Productivity</h4>
-                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500 text-xs"></i> <strong>Gemini AI Integration</strong></li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500 text-xs"></i> Rapid Draft & Email Editing</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500 text-xs"></i> Research & Data Summarization</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-purple-500 text-xs"></i> Workflow Task Automation</li>
-                    </ul>
-                </div>
-
-                <!-- Skill 3 -->
-                <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 space-y-4">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl">
-                        <i class="fas fa-folder-tree"></i>
-                    </div>
-                    <h4 class="text-lg font-bold text-slate-900 dark:text-white">Admin Suite & Operations</h4>
-                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Google Workspace (Docs, Sheets, Drive)</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Microsoft 365 & Excel Data Entry</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Calendar Scheduling & Inbox Filter</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> CRM Database Management</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing & Service Packages Section -->
-    <section id="pricing" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">Transparent Rates</h2>
-                <h3 class="text-3xl font-bold text-slate-900 dark:text-white mt-2">Service Packages & Hourly Pricing</h3>
-                <p class="text-slate-600 dark:text-slate-400 mt-2 text-sm">Competitive rates for world-class Virtual Assistant support</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                
-                <!-- Package 1 -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">Hourly Rate</h4>
-                        <p class="text-xs text-slate-500 mt-1">Flexible support for ad-hoc tasks</p>
-                        <div class="my-4">
-                            <span class="text-4xl font-extrabold text-slate-900 dark:text-white">$5.00</span>
-                            <span class="text-slate-500 text-sm">/ hour</span>
-                        </div>
-                        <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> On-demand Admin Tasks</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> Multi-channel customer response</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> Gemini AI task speedup</li>
-                        </ul>
-                    </div>
-                    <button onclick="scrollToContact()" class="mt-6 w-full py-2.5 rounded-xl border border-brand-600 text-brand-600 dark:text-brand-400 font-semibold text-sm hover:bg-brand-50 dark:hover:bg-slate-700">Get Started</button>
-                </div>
-
-                <!-- Package 2 (Featured) -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border-2 border-brand-500 shadow-xl relative flex flex-col justify-between">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">Most Popular</div>
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">Full-Time VA Package</h4>
-                        <p class="text-xs text-slate-500 mt-1">Dedicated 40 hrs/week business partner</p>
-                        <div class="my-4">
-                            <span class="text-4xl font-extrabold text-brand-600 dark:text-brand-400">$800</span>
-                            <span class="text-slate-500 text-sm">/ month</span>
-                        </div>
-                        <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> 40 hours/week dedicated support</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> Inbound/Outbound voice & chat</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> Calendar & Email filtering</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> AI-powered research & content</li>
-                        </ul>
-                    </div>
-                    <button onclick="scrollToContact()" class="mt-6 w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-sm shadow-md">Hire Full-Time</button>
-                </div>
-
-                <!-- Package 3 -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <h4 class="font-bold text-lg text-slate-900 dark:text-white">Part-Time Package</h4>
-                        <p class="text-xs text-slate-500 mt-1">Dedicated 20 hrs/week support</p>
-                        <div class="my-4">
-                            <span class="text-4xl font-extrabold text-slate-900 dark:text-white">$420</span>
-                            <span class="text-slate-500 text-sm">/ month</span>
-                        </div>
-                        <ul class="space-y-2 text-xs text-slate-600 dark:text-slate-300">
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> 20 hours/week dedicated</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> Daily email & chat triage</li>
-                            <li><i class="fas fa-check text-emerald-500 mr-2"></i> Spreadsheet & CRM updates</li>
-                        </ul>
-                    </div>
-                    <button onclick="scrollToContact()" class="mt-6 w-full py-2.5 rounded-xl border border-brand-600 text-brand-600 dark:text-brand-400 font-semibold text-sm hover:bg-brand-50 dark:hover:bg-slate-700">Hire Part-Time</button>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Discovery Call Section -->
-    <section id="contact" class="py-16 md:py-24 bg-slate-100 dark:bg-slate-900/80 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 sm:p-12 border border-slate-200 dark:border-slate-700 shadow-2xl">
-                <div class="text-center space-y-3 mb-8">
-                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">Let's Work Together!</h2>
-                    <p class="text-slate-600 dark:text-slate-300 text-sm">Send a message to discuss your requirements or schedule a interview call.</p>
-                </div>
-
-                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
-                            <input type="text" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
-                            <input type="email" required placeholder="client@company.com" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Role Needed / Project Type</label>
-                        <select class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-700 dark:text-slate-300">
-                            <option>Full-Time Virtual Assistant ($800/mo)</option>
-                            <option>Part-Time Virtual Assistant ($420/mo)</option>
-                            <option>Hourly Customer Support ($5/hr)</option>
-                            <option>General Inquiry</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Message</label>
-                        <textarea rows="4" required placeholder="Hi Gracie, I need help managing client emails and customer support..." class="w-full px-4 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-lg transition">
-                        Send Message to Gracie
-                    </button>
-                </form>
-
-                <!-- Confirmation Alert Box -->
-                <div id="formSuccess" class="hidden mt-4 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-200 text-emerald-700 dark:text-emerald-300 text-sm text-center">
-                    <i class="fas fa-check-circle mr-2"></i> Thank you for reaching out! Gracie will reply to your email within 2-4 hours.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto px-4">
-            <p>© 2026 Gracie B. Magpantay. All Rights Reserved. Virtual Assistant & Client Support Specialist.</p>
-        </div>
-    </footer>
-
-    <!-- Interactive Script -->
-    <script>
-        // Dark Mode Logic
-        const themeToggle = document.getElementById('themeToggle');
-        const themeToggleMobile = document.getElementById('themeToggleMobile');
-        const themeIcon = document.getElementById('themeIcon');
-        const themeIconMobile = document.getElementById('themeIconMobile');
-
-        function toggleTheme() {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                themeIcon.className = 'fas fa-moon';
-                themeIconMobile.className = 'fas fa-moon';
-            } else {
-                document.documentElement.classList.add('dark');
-                themeIcon.className = 'fas fa-sun text-amber-400';
-                themeIconMobile.className = 'fas fa-sun text-amber-400';
-            }
-        }
-        themeToggle.addEventListener('click', toggleTheme);
-        themeToggleMobile.addEventListener('click', toggleTheme);
-
-        // Mobile Menu Toggle
-        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Tab Switching for Portfolio Work Samples
-        function switchTab(tabId) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-            // Reset button styles
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                b.className = "tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300";
-            });
-
-            // Show selected tab content
-            document.getElementById('content-' + tabId).classList.remove('hidden');
-            // Active button style
-            document.getElementById('tab-' + tabId).className = "tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm bg-brand-600 text-white shadow-md";
-        }
-
-        // Smooth Scroll Helper
-        function scrollToContact() {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Form Submit Handler
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            document.getElementById('contactForm').reset();
-            const successBox = document.getElementById('formSuccess');
-            successBox.classList.remove('hidden');
-            setTimeout(() => {
-                successBox.classList.add('hidden');
-            }, 6000);
-        }
-    </script>
-</body>
-</html>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                Reliable Virtual Assistant & <span class="text-blue-500">Client Support Specialist</span>
+            </h1>
+            <p class="text-lg opacity-80 leading-relaxed">
+                Bringing 15+ months of structured BPO excellence across Financial, E-Commerce, and Telco accounts. Equipped with top-tier multi-channel communication, 95% CSAT performance, and modern workflow proficiency.
